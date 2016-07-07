@@ -37,9 +37,9 @@ public class FindWeather {
                 
 			    JSONObject main = new JSONObject(result);
 			
-			    result = main.getJSONObject("main").getString("temp");			
+			    Double temp = main.getJSONObject("main").getDouble("temp");			
 			
-			    return result;
+			    return temp.toString();
             }
           } catch (IOException e) {
 
