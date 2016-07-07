@@ -16,11 +16,11 @@ import org.json.JSONObject;
 public class FindWeather {
 
 	public String getWeather(String city) throws JSONException{
-		String result = "";
-		try {
+	String result = "";	
+	try {
 
-			URL url = new URL(createURL(city));
-			HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+	    URL url = new URL(createURL(city));
+	    HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
 			 
             if (httpURLConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
  
@@ -35,24 +35,24 @@ public class FindWeather {
                  
                 bufferedReader.close();
                 
-			    JSONObject main = new JSONObject(result);
+		JSONObject main = new JSONObject(result);
 			
-			    Double temp = main.getJSONObject("main").getDouble("temp");			
-			
-			    return temp.toString();
+		Double temp = main.getJSONObject("main").getDouble("temp");			
+		
+		return temp.toString();
             }
-          } catch (IOException e) {
+        } catch (IOException e) {
 
-			e.printStackTrace();
+	    e.printStackTrace();
 
-		  }
-		return result;
+	}
+	return result;
 		
 	}
+	
 	private String createURL (String city) throws MalformedURLException{
 		//Remove anything other than letters from the city name
 		city = city.replaceAll("[^\\p{Alpha}]","");
 		return "http://api.openweathermap.org/data/2.5/weather?q="+ city + "&units=imperial&APPID=956f3adef63789decdb519880b98e6be";
-		
 	}
 }
