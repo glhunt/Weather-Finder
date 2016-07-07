@@ -50,7 +50,7 @@ public class FindWeather {
 		
 	}
 	private String createURL (String city) throws MalformedURLException{
-		//Remove any spaces from the city name
+		//Remove anything other than letters from the city name
 		city = city.replaceAll("[^\\p{Alpha}]","");
 		return "http://api.openweathermap.org/data/2.5/weather?q="+ city + "&units=imperial&APPID=956f3adef63789decdb519880b98e6be";
 		
